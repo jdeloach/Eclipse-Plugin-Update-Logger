@@ -1,0 +1,9 @@
+Options +FollowSymLinks
+RewriteEngine on
+#RewriteRule ^site.xml$ site.php
+RewriteRule downloads.php$ lib/downloads.class.php
+RewriteRule ^features/(.*).jar$ /update/featureDownload.php?f=$1
+RewriteRule ^whois/(.*)$ whois.php?$ip=$1
+
+
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="static/css/main.css" />
+<title>Eclipse Plugin Download Tracker | Main</title>
+</head>
+<body>
+<div id="wrapper">
+<div id="header">
+<h2>Eclipse Plugin Download Tracker</h2>
+</div>
+<div id="menu">
+<div class="button"><a href="?log">Log</a></div>
+<div class="button"><a href="?downloads">Downloads</a></div>
+<div class="button"><a href="?config">Config</a></div>
+<div class="button"><a href="?logout">Logout</a></div>
+</div>
+<div id="main">
+<br />
+<center>
+<?php
+require('lib/downloads.class.php');
+$downloads = new Downloads();
+$features = $downloads->getFeatures();
+$count = $downloads->getFeaturesCount($features);
+?>
+<table style='background-color: #CDCDCD;' border='#FFF' width='700px'>
+<tr>
+<th width='80%'>Feature</th>
+<th width='20%'>Download Count</th>
+<?php
+$i = 0;
+while( $row = $features[$i] ) {
+	$rowCount = $count[$i];
+	print "<tr>
+	<td>" . $row . "</td>
+	<td>" . $rowCount . "</a></td>
+	</tr>";
+	$i++;
+}
+?>
+</table>
+
+
+</center>
+</div>
+<div id="footer">
+<h5 class="copyright">&copy; <a href="http://project.jtmcgee.net/">jtmcgee.net projects</a> 2009-Current<br />
+Design and Tracker by <a href="http://jtmcgee.net">Jordan T. DeLoach</a></h5>
+</div>
+</div>
+</body>
+</html>
