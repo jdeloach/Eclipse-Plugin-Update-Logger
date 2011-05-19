@@ -9,7 +9,7 @@ class IPData {
 	
 	function whois($domain, $server="whois.arin.net")
 	{ 
-	    $fp = fsockopen ($server, 43, &$errnr, &$errstr) or die("$errno: $errstr");
+	    $fp = fsockopen ($server, 43, $errnr, $errstr) or die("$errno: $errstr");
 	    fputs($fp, "$domain\n");
 	    while (!feof($fp))
 	        echo "<pre>".fgets($fp, 2048);
@@ -18,7 +18,7 @@ class IPData {
 	
 	function get_whois($domain, $server="whois.arin.net")
 	{
-	    $fp = fsockopen ($server, 43, &$errnr, &$errstr) or die("$errno: $errstr");
+	    $fp = fsockopen ($server, 43, $errnr, $errstr) or die("$errno: $errstr");
 	    fputs($fp, "$domain\n");
 	    while (!feof($fp))
 	        $nt .= fgets($fp, 2048);
