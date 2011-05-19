@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 function handleError($errno, $errstr, $error_file, $error_line) {
 	$time = date('r');
 		
-	$to = ''; //TO
+	$to = 'spam@jtmcgee.net'; //TO
 	$subject = "Eclipse Update Site FAILURE";
 	$message = "To whom it may concern, \n";
 	$message .= "It would appear that the Update logger has failed.\n";
