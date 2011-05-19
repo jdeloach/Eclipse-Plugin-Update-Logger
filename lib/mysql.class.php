@@ -42,7 +42,7 @@ class Mysql
 	function selectDB($db=NULL)
 	{
 		if(isset($db)) mysql_select_db($db);
-		if(!isset($db)) mysql_select_db($dbName);
+		if(!isset($db)) mysql_select_db($GLOBALS['dbName']);
 	}
 	function query($query)
 	{
