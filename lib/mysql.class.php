@@ -1,5 +1,5 @@
 <?php
-require('config.php');
+require('/var/www/update/config.php');
  define('DEFAULT_MYSQL_SERVER', $dbServer);
  define('DEFAULT_MYSQL_USER', $dbUser);
  define('DEFAULT_MYSQL_PASSWORD', $dbPassword);
