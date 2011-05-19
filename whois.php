@@ -1,5 +1,6 @@
 <?php
 require('lib/getwhois.class.php');
+require('config.php');
 
 //$gAPI = ''; //your key from google for maps!
 
