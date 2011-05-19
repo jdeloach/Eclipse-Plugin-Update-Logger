@@ -1,7 +1,7 @@
 <?php
 require('lib/getwhois.class.php');
 
-$gAPI = ''; //your key from google for maps!
+//$gAPI = ''; //your key from google for maps!
 
 $whois = new IPData;
 $data = $whois->locateIp($_GET['ip']);
