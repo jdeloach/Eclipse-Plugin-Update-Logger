@@ -1,7 +1,8 @@
 <?php
- define('DEFAULT_MYSQL_SERVER', 'mysql');
- define('DEFAULT_MYSQL_USER', '');
- define('DEFAULT_MYSQL_PASSWORD', '');
+require('../config.php') or die('You need to create a config.php in the update root dir!');
+ define('DEFAULT_MYSQL_SERVER', $dbServer);
+ define('DEFAULT_MYSQL_USER', $dbUser);
+ define('DEFAULT_MYSQL_PASSWORD', $dbPassword);
  
  
  
@@ -41,7 +42,7 @@ class Mysql
 	function selectDB($db=NULL)
 	{
 		if(isset($db)) mysql_select_db($db);
-		if(!isset($db)) mysql_select_db('sdeloach');
+		if(!isset($db)) mysql_select_db($dbName);
 	}
 	function query($query)
 	{
