@@ -25,21 +25,25 @@ $downloads = new Downloads();
 $features = $downloads->getFeatures();
 $count = $downloads->getFeaturesCount($features);
 ?>
-<table style='background-color: #CDCDCD;' border='#FFF' width='700px'>
+<table width="700px" border="1" cellspacing="3" cellpadding="3" style='background-color: #CDCDCD;' border='#FFF'>
 <tr>
 <th width='80%'>Feature</th>
 <th width='20%'>Download Count</th>
 <?php
 $i = 0;
 while( $row = $features[$i] ) {
+	if($i % 2)
+		$bgColor = "FFFFFF"; // color 1
+	else
+		$bgColor = "C0C0C0"; //color 2
 	$rowCount = $count[$i];
 	print "<tr>
-	<td>" . $row . "</td>
-	<td>" . $rowCount . "</a></td>
-	</tr>";
-	$i++;
-}
-?>
+		<td bgcolor='" . $bgColor . "'><a href='lib/downloads.class.php?f=" . substr($row, 0,strrpos($row,'.'))   . "'>" . $row . "</a></td>
+		<td bgcolor='" . $bgColor  . "'>" . $rowCount . "</a></td>
+		</tr>";
+		$i++;
+	}
+	?>
 </table>
 
 
