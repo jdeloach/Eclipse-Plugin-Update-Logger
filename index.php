@@ -1,6 +1,7 @@
 <?php
 session_start();
-$pwd = '/update/';
+require('config.php');
+$pwd = $GLOBALS['pwd'];
 #require('error.php');
 require('lib/.users.php');
 require('lib/auth.class.php');
