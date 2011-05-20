@@ -1,4 +1,4 @@
 TODO
 ============================
 
-1. Add a section in install.php that creates a config file.
+1. Added an index.php that displays basic info
