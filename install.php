@@ -18,6 +18,8 @@ if($errors == 'y' OR $errors == 'Y') {
 }
 
 $rootDir = readline("What is the path to the update dir? (from the web like /update/ or /proj/blank/update/): ");
+$userName = readline("First users username: ");
+$userPassword = readline("First users password: ");
 
 $fh = fopen("config.php", 'w') or die('Can\'t open/create file config.php');
 fwrite($fh, "<?php\r\n");
@@ -31,6 +33,8 @@ if(isset($errorEmail))
 fwrite($fh, '$pwd = \'' . $rootDir . "';\r\n");
 fclose($fh);
 
+require('lib/auth.class.php');
+Auth::addUser($userName, $userPassword);
 
 $query = '
 CREATE TABLE IF NOT EXISTS `eclipseLog` (
