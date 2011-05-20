@@ -1,21 +1,23 @@
 <?php 
-$dbUser = readline("MySQL username:");
+$dbUser = readline("MySQL username: ");
 
-$dbPassword = readline("MySQL password:");
+$dbPassword = readline("MySQL password: ");
 
-$dbServer = readline("MySQL server:");
+$dbServer = readline("MySQL server: ");
 
-$dbName = readline("MySQL database name:");
+$dbName = readline("MySQL database name: ");
 
-$gAPI = readline("gAPI key (not required, hit enter if skipping):");
+$gAPI = readline("gAPI key (not required, hit enter if skipping): ");
 
-$errors = readline("Email you error reports? (y or n)");
+$errors = readline("Email you error reports? (y or n): ");
 if($errors == 'y' OR $errors == 'Y') {
-	$errorEmail = readline("To what email address should we send the email?");
+	$errorEmail = readline("To what email address should we send the email?: ");
 	rename('install/errorOn.php', 'error.php');
 } else {
 	rename('install/errorOff.php', 'error.php');
 }
+
+$rootDir = readline("What is the path to the update dir? (from the web like /update/ or /proj/blank/update/): ");
 
 $fh = fopen("config.php", 'w') or die('Can\'t open/create file config.php');
 fwrite($fh, "<?php\r\n");
@@ -24,8 +26,9 @@ fwrite($fh, '$dbPassword = \'' . $dbPassword . "';\r\n");
 fwrite($fh, '$dbServer = \'' . $dbServer . "';\r\n");
 fwrite($fh, '$dbName = \'' . $dbName . "';\r\n");
 fwrite($fh, '$gAPI  = \'' . $gAPI . "';\r\n");
-fwrite($fh, '$to = \'' . $errorEmail . "';\r\n");
-
+if(isset($errorEmail))
+	fwrite($fh, '$to = \'' . $errorEmail . "';\r\n");
+fwrite($fh, '$pwd = \'' . $rootDir . "';\r\n");
 fclose($fh);
 
 
