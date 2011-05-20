@@ -9,6 +9,14 @@ $dbName = readline("MySQL database name:");
 
 $gAPI = readline("gAPI key (not required, hit enter if skipping):");
 
+$errors = readline("Email you error reports? (y or n)");
+if($errors == 'y' OR $errors == 'Y') {
+	$errorEmail = readline("To what email address should we send the email?");
+	rename('install/errorOn.php', 'error.php');
+} else {
+	rename('install/errorOff.php', 'error.php');
+}
+
 $fh = fopen("config.php", 'w') or die('Can\'t open/create file config.php');
 fwrite($fh, "<?php\r\n");
 fwrite($fh, '$dbUser = \'' . $dbUser . "';\r\n");
@@ -16,6 +24,7 @@ fwrite($fh, '$dbPassword = \'' . $dbPassword . "';\r\n");
 fwrite($fh, '$dbServer = \'' . $dbServer . "';\r\n");
 fwrite($fh, '$dbName = \'' . $dbName . "';\r\n");
 fwrite($fh, '$gAPI  = \'' . $gAPI . "';\r\n");
+fwrite($fh, '$to = \'' . $errorEmail . "';\r\n");
 
 fclose($fh);
 
