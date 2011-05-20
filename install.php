@@ -54,5 +54,5 @@ $mysql = new Mysql();
 $mysql->connect()->selectDB();
 mysql_query($drop);
 mysql_query($query);
-print "Successfully re-installed MySQL table";
+print "Successfully re-installed MySQL table\n";
 ?>
