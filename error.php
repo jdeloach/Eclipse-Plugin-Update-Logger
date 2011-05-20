@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL);
+error_reporting(E_ERROR);
 function handleError($errno, $errstr, $error_file, $error_line) {
 	$time = date('r');
 		
@@ -18,7 +18,10 @@ function handleError($errno, $errstr, $error_file, $error_line) {
 	$message .= '$error_line: '.$error_line."\n";
 	$message = wordwrap($message, 70);
 		
-	mail($to, $subject, $message) or die('Life sucks... were broken and we can\'t even tell our Sysadmins about it... ') or die('Failed to mail');
+	//mail($to, $subject, $message) or die('Life sucks... were broken and we can\'t even tell our Sysadmins about it... ') or die('Failed to mail');
+
+	// TODO mail not working....
+	print $message;
 	print "Problem identified, administrators have been emailed. Thank you.";
 }
 set_error_handler("handleError");
