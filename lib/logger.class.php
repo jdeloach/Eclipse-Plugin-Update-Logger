@@ -1,11 +1,6 @@
 <?php
-require('error.php');
-require('mysql.class.php');
-require('getwhois.class.php');
+require('xmlWrite.class.php');
 
-function throwException($message = null,$code = null) {
-    throw new Exception($message,$code);
-}
 
 class Logger {
 	
@@ -15,9 +10,13 @@ class Logger {
 	 */
 	
 	function collect($feature) { 
+		$feature = array(
+		'name' => $feature);
 		$collection  = array(
+		'agent' => $_SERVER['HTTP_USER_AGENT'],
 		'ip' => $_SERVER['REMOTE_ADDR'],
 		'feature' => $feature);
+		$collection = array('0' => $collection);
 		/*print "<pre>";
 		print_r($collection);
 		print "</pre>";*/
@@ -25,17 +24,9 @@ class Logger {
 	}
 	function execute($feature) {
 		$data = $this->collect($feature);
+		$xmlwriter = new XMLWrite($data);
 		
-		$this->whois = new IPData;
-		$geoTag = $this->whois->locateIP($data['ip']);
-		$this->mysql = new Mysql;
-		
-		$this->mysql->connect()->selectDB();
-		mysql_query("INSERT INTO `eclipseLog` (`ip`, `feature`, `location`
-			) VALUES (
-				'".$data['ip']."', '".$data['feature']."', '" . $geoTag['city'] . ", " . $geoTag['region_name'] . "');
-		") or throwException('MYSQL ERROR');
-		
+		$xmlwriter->write();
 	}
 	function recentlyDownloaded($ip) {
 		// prolly will never work.
