@@ -6,11 +6,13 @@ class Admin {
 	function __construct() {
 	}
 	function getLog() {
-		$query = xml2array(file_get_contents("../logs/log0.xml"));
+		$query = xml2array(file_get_contents("logs/log0.xml"));
 		return $query;
 	}
 	function format() {
 		$array = $this->getLog();
+		$array = $array['log']['download'];
+		//$array = $array['log'];
 		print "<a href=\"lib/backupLog.class.php\">Download list as CSV ( Excel )</a><br />";
 		print "<a href=\"?clear\">Clear this List</a>";
 		print "<table width=\"700px\" border=\"1\" cellspacing=\"3\" cellpadding=\"3\" style='background-color: #CDCDCD;' border='#FFF'>\n";
@@ -27,7 +29,8 @@ class Admin {
 		$url = $loc['0'];
 		$i = 0;
 		date_default_timezone_set('America/Chicago');
-		while ($d = mysql_fetch_array($array)) {
+		for($i = 0; $i < count($array); $i++) {
+			$d = $array[$i];
 			$date = (string) $d['date'];
 			if($i % 2)
 				$bgColor = "FFFFFF"; // color 1
@@ -39,7 +42,7 @@ class Admin {
 			print "<td><a href='whois.php?ip=" . $d['ip'] . "'>" . $d['ip'] . "</a></td>\n";
 			print "<td>" . date('M j, Y g:i a', strtotime($date)) . "</td>\n";
 			print "<td>" . $d['location'] . "</td>\n";
-			print "<td><a href='lib/downloads.class.php?f=" . $d['feature'] . "'>" . $d['feature'] . "</td>\n";
+			print "<td><a href='lib/downloads.class.php?f=" . $d['feature']['name'] . "'>" . $d['feature']['name'] . "</td>\n";
 			print "<td><a href='?delete=" . $d['id'] . "'>Delete</a></td>\n";
 			print "</tr>\n";
 			$i++;
