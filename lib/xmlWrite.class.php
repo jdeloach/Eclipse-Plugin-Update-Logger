@@ -12,7 +12,7 @@ class XMLWrite {
 		$this->whois = new IPData;
 		$loc = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
 		$loc = explode("featureDownload.php", $loc);
-		$url = $loc['0'].'lib/1.1.1.xml';
+		$url = $loc['0'].'logs/log0.xml';
 		$reader = simplexml_load_file($url);
 		foreach($reader->download as $d) {
 			$this->number = $d->number;
@@ -49,9 +49,9 @@ class XMLWrite {
 	function write() {
 		$xml = $this->compile();
 		
-		$originalfile = file_get_contents ('logs/1.1.1.xml');
+		$originalfile = file_get_contents ('logs/log0.xml');
 		$newFile = str_replace('</log>',$xml.'</log>',$originalfile);
-		file_put_contents('logs/1.1.1.xml', $newFile);
+		file_put_contents('logs/log0.xml', $newFile);
 		
 	}
 }
