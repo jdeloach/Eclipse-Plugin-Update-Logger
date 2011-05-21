@@ -1,14 +1,12 @@
 <?php 
-require('mysql.class.php');
+require('xml2array.class.php');
 
 class Admin {
 	
 	function __construct() {
 	}
 	function getLog() {
-		$this->mysql = new Mysql;
-		$this->mysql->connect()->selectDB();
-		$query = mysql_query("SELECT * FROM `eclipseLog` ORDER BY `id`");
+		$query = xml2array(file_get_contents("../logs/log0.xml"));
 		return $query;
 	}
 	function format() {
