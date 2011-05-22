@@ -12,7 +12,6 @@ class Admin {
 	function format() {
 		$array = $this->getLog();
 		$array = $array['log']['download'];
-		//$array = $array['log'];
 		print "<a href=\"lib/backupLog.class.php\">Download list as CSV ( Excel )</a><br />";
 		print "<a href=\"?clear\">Clear this List</a>";
 		print "<table width=\"700px\" border=\"1\" cellspacing=\"3\" cellpadding=\"3\" style='background-color: #CDCDCD;' border='#FFF'>\n";
@@ -23,7 +22,6 @@ class Admin {
 		print "<th width='29%'>Location</th>\n";
 		print "<th width='21%'>Features</th>\n";
 		print "<th width='5%'></th>\n";
-		$i = '0';
 		$loc = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 		$loc = explode('?', $loc);
 		$url = $loc['0'];
@@ -45,7 +43,6 @@ class Admin {
 			print "<td><a href='lib/downloads.class.php?f=" . $d['feature']['name'] . "'>" . $d['feature']['name'] . "</td>\n";
 			print "<td><a href='?delete=" . $d['id'] . "'>Delete</a></td>\n";
 			print "</tr>\n";
-			$i++;
 		}
 		print "</table>";
 	}
