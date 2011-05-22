@@ -6,4 +6,54 @@
         <releaseDate>October 1, 1960</releaseDate>
 </logInfo>
 
+<download>
+    <ip>192.168.1.5</ip>
+    <date>2011-05-21T18:55:50-05:00</date>
+    <number>1</number>
+    <agent>Mozilla/5.0 (Windows NT 5.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</agent>
+    <location>, </location>
+    <feature>
+        <name>file1</name>
+    </feature>
+</download>
+<download>
+    <ip>192.168.1.5</ip>
+    <date>2011-05-21T19:00:05-05:00</date>
+    <number>2</number>
+    <agent>Mozilla/5.0 (Windows NT 5.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</agent>
+    <location>, </location>
+    <feature>
+        <name>file1</name>
+    </feature>
+</download>
+<download>
+    <ip>192.168.1.5</ip>
+    <date>2011-05-21T19:00:42-05:00</date>
+    <number>2</number>
+    <agent>Mozilla/5.0 (Windows NT 5.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</agent>
+    <location>, </location>
+    <feature>
+        <name>file</name>
+    </feature>
+</download>
+<download>
+    <ip>192.168.1.5</ip>
+    <date>2011-05-21T19:00:44-05:00</date>
+    <number>2</number>
+    <agent>Mozilla/5.0 (Windows NT 5.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</agent>
+    <location>, </location>
+    <feature>
+        <name>file</name>
+    </feature>
+</download>
+<download>
+    <ip>192.168.1.5</ip>
+    <date>2011-05-21T19:00:49-05:00</date>
+    <number>2</number>
+    <agent>Mozilla/5.0 (Windows NT 5.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</agent>
+    <location>, </location>
+    <feature>
+        <name>file1</name>
+    </feature>
+</download>
 </log>
